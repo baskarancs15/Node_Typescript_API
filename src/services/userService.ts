@@ -10,8 +10,8 @@ export async function createUser(data:any) {
     try {
         console.log("came in service",data);
         let email = data.email;
-        let checkEmailAlreadyExist = await UserModel.find({email:email});
-        if(!checkEmailAlreadyExist){
+        let checkEmailAlreadyExist = await UserModel.findOne({email:email});
+        if(checkEmailAlreadyExist){
             return {
                 code: 404,
                 message: "Email Already Exist!Please Choose Another Email"
